@@ -41,7 +41,7 @@ git push origin $branch_name
 - Include instructions of how to launch scripts in the build subfolder
 Create the following directory structure for obtaining the Semantic Segmentation Masked images : 
 ---
-
+```bash
 ssm_generation
 ├── bdd100K
 │   ├── bdd100kscripts
@@ -87,7 +87,7 @@ ssm_generation
 ├── deepLab_train_1.sh
 ├── deepLab_vis_1.sh
 └── download_data_in_dir.sh
-
+```
 - Build scripts can include shell scripts or python setup.py files
 - The purpose of these scripts is to build a standalone environment, for running the code in this repository
 - The environment can be for local use, or for use in a cloud environment
