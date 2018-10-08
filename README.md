@@ -1,5 +1,7 @@
-# Insight_Project_Framework
-Framework for machine learning projects at Insight Data Science. 
+# Automated Turk: Enhancing Autonomous Vehicles.
+This AI software solution:
+1. Generate Semantic Segmention of existing videos.
+2. Generate photo-realistic, High-resolution new driving videos.
 
 ## Motivation for this project format:
 - **src** : Put all source code for production within structured directory
