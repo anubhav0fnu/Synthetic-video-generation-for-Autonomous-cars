@@ -45,10 +45,10 @@ Create the following directory structure for obtaining the Semantic Segmentation
 ---
 ```bash
 ssm_generation
-├── bdd100K
+├── bdd100K (dataset-1)
 │   ├── bdd100kscripts
 │   ├── checkpoints
-│   ├── exp
+│   ├── exp (create these directories, required by deeplab scripts.)
 │   │   └── train_on_train_set
 │   │       ├── test
 │   │       ├── train
@@ -56,12 +56,12 @@ ssm_generation
 │   ├── images
 │   ├── labels
 │   └── tfrecord
-├── build_cityscapes_data.py
+├── build_cityscapes_data.py (find scripts at "https://github.com/tensorflow/models/tree/master/research/deeplab/datasets/")
 ├── build_data.py
-├── cityscapes
+├── cityscapes (dataset-2)
 │   ├── checkpoints
 │   │   └── deeplabv3_cityscapes_train
-│   ├── cityscapesscripts
+│   ├── cityscapesscripts (Maintain hierarchy, git clone "https://github.com/mcordts/cityscapesScripts.git")
 │   │   ├── annotation
 │   │   ├── evaluation
 │   │   ├── helpers
@@ -74,21 +74,22 @@ ssm_generation
 │   │       └── vis
 │   │           ├── raw_segmentation_results
 │   │           └── segmentation_results
-│   ├── gtFine
+│   ├── gtFine (Login & download the "gtFine_trainvaltest.zip" dataset)
 │   │   ├── test
 │   │   ├── train
 │   │   └── val
-│   ├── leftImg8bit
+│   ├── leftImg8bit (Login & download the "leftImg8bit_trainvaltest.zip" dataset)
 │   │   ├── test
 │   │   ├── train
 │   │   └── val
-│   └── tfrecord
-├── convert_cityscapes.sh
-├── deeplab
+│   └── tfrecord (Filled by "convert_cityscapes.sh" script.)
+├── convert_cityscapes.sh (split data into train & val sets & converts toTFrecords's shards.)
+├── deeplab ( git clone https://github.com/tensorflow/models/blob/master/research/deeplab)
 │   └── ...
-├── deepLab_train_1.sh
-├── deepLab_vis_1.sh
-└── download_data_in_dir.sh
+├── deepLab_train_1.sh (script to run deeplab/train.py)
+├── deepLab_eval_1.sh   (script to run deeplab/eval.py)
+├── deepLab_vis_1.sh   (script to run deeplab/vis.py)
+└── download_data_in_dir.sh (After creating above directory structure, could be used for populating directories.)
 ```
 - Build scripts can include shell scripts or python setup.py files
 - The purpose of these scripts is to build a standalone environment, for running the code in this repository
