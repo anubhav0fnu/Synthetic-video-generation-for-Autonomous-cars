@@ -39,6 +39,44 @@ git push origin $branch_name
 
 ## Build Environment
 - Include instructions of how to launch scripts in the build subfolder
+Create the following directory structure for obtaining the Semantic Segmentation Masked images : 
+---
+
++ Your_Project_dir_for_dataset_processing
+  # find these scripts at "https://github.com/tensorflow/models/tree/master/research/deeplab/datasets/"
+- build_cityscapes_data.py
+- build_data.py
+- convert_cityscapes.sh
+  + cityscapes
+    + checkpoints
+    # CLONE "https://github.com/mcordts/cityscapesScripts.git", and copy the "cityscapesscripts" folder in the folder hierarchy.
+    + cityscapesscripts
+      + annotation
+      + evaluation
+      + helpers
+      + preparation
+      + viewer
+    # create these directories, required by deeplab scripts.
+    + exp
+      + train_on_train_set
+       + eval
+       + train
+       + vis
+    # Login & download the "gtFine_trainvaltest.zip" dataset
+    # wget https://www.cityscapes-dataset.com/file-handling/?packageID=1
+    + gtFine
+      + train
+      + val
+      + test
+    # Login & download the "leftImg8bit_trainvaltest.zip" dataset
+    # wget https://www.cityscapes-dataset.com/file-handling/?packageID=3
+    + leftImg8bit
+      + train
+      + val
+      + test
+    # Filled by "convert_cityscapes.sh" script.
+    + tfrecord
+---
 - Build scripts can include shell scripts or python setup.py files
 - The purpose of these scripts is to build a standalone environment, for running the code in this repository
 - The environment can be for local use, or for use in a cloud environment
