@@ -16,3 +16,5 @@ def timeit(method):
         return result
 
     return timed
+
+# TODO add a counter decorator.

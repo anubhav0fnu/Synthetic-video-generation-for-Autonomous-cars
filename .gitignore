@@ -102,3 +102,36 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+./src/semantic_seg_gen
+
+*.png
+# dataset, models & checkpoints
+./src/semantic_seg_gen/__pycache__
+
+./src/semantic_seg_gen/cityscapes/exp/train_on_train_set/train/train_00_result
+./src/semantic_seg_gen/cityscapes/exp/train_on_train_set/train/train_0_result/*
+./src/semantic_seg_gen/cityscapes/exp/train_on_train_set/train/train_1_result/*
+./src/semantic_seg_gen/cityscapes/exp/train_on_train_set/train/train_2_result/*
+
+./src/semantic_seg_gen/cityscapes/checkpoints/deeplab_cityscapes_xception71_trainfine_2018_09_08.tar.gz
+./src/semantic_seg_gen/cityscapes/checkpoints/deeplab_cityscapes_xception71_trainvalfine_2018_09_08.tar.gz
+./src/semantic_seg_gen/cityscapes/checkpoints/deeplabv3_cityscapes_train_2018_02_06.tar.gz
+
+
+./src/semantic_seg_gen/cityscapes/checkpoints/deeplabv3_cityscapes_train_2018_02_06/*
+./src/semantic_seg_gen/cityscapes/checkpoints/deeplab_cityscapes_xception71_trainvalfine_2018_09_08/*
+./src/semantic_seg_gen/cityscapes/checkpoints/deeplab_cityscapes_xception71_trainfine_2018_09_08/*
+
+./src/semantic_seg_gen/cityscapes/exp/train_on_train_set/vis/raw_segmentation_results/*
+./src/semantic_seg_gen/cityscapes/exp/train_on_train_set/vis/segmentation_results/*
+
+./src/semantic_seg_gen/cityscapes/gtFine/test/*
+./src/semantic_seg_gen/cityscapes/gtFine/train/*
+./src/semantic_seg_gen/cityscapes/gtFine/val/*
+
+./src/semantic_seg_gen/cityscapes/leftImg8bit/test/*
+./src/semantic_seg_gen/cityscapes/leftImg8bit/train/*
+./src/semantic_seg_gen/cityscapes/leftImg8bit/val/*
+
+./src/semantic_seg_gen/cityscapes/tfrecord/*
