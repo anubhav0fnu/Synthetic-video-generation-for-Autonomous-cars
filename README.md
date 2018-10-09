@@ -1,45 +1,40 @@
 # Automated Turk: Enhancing Autonomous Vehicles.
-This AI software solution:
-1. Generate Semantic Segmention of existing videos.
+Statistically, each year up to 1.2 million deaths that occur due to car accidents across the globe were caused by human errors. Autonomous vehicle technology could drastically avoid these accidents. The self-driving car companies constantly trying to make their autonomous vehicles more robust by capturing the wide distribution of all possible driving scenarios but they failed   to achieve at this point due to past recurring crashes. These autonomous systems actually learn from driving videos and the problem with currently available video datasets are
+  1. Not annotated.
+  2. Most of them aren't high resolution videos which is again an impediment for object detection.
+   
+So, this is an AI software solution with help of which you can:
+1. Generate Semantic Segmention Masks for existing videos.
+
+<p float="left">
+  <img src="results/gifs/hyperlink_img/aachen_000000_000019_leftImg8bit.png" width="300" />
+  <img src="results/gifs/hyperlink_img/aachen_000000_000019_gtFine_color.png" width="300" /> 
+</p>
+
 2. Generate photo-realistic, High-resolution new driving videos.
+<img src="results/gifs/CS_test2048Model_with_inst_fg_2048.gif" width="480" /> <br />
 
-## Motivation for this project format:
-- **src** : Put all source code for production within structured directory
-- **tests** : Put all source code for testing in an easy to find location
-- **configs** : Enable modification of all preset variables within single directory (consisting of one or many config files for separate tasks)
-- **data** : Include example a small amount of data in the Github repository so tests can be run to validate installation
-- **build** : Include scripts that automate building of a standalone environment
-- **static** : Any images or content to include in the README or web framework if part of the pipeline
+#### Full architechure
+It will help the user to understand the flow of the code.
 
-## Setup
-Clone repository and update python path
-```
-repo_name=Insight_Project_Framework # URL of your new repository
-username=mrubash1 # Username for your personal github account
-git clone https://github.com/$username/$repo_name
-cd $repo_name
-echo "export $repo_name=${PWD}" >> ~/.bash_profile
-echo "export PYTHONPATH=$repo_name/src:${PYTHONPATH}" >> ~/.bash_profile
-source ~/.bash_profile
-```
-Create new development branch and switch onto it
-```
-branch_name=dev-readme_requisites-20180905 # Name of development branch, of the form 'dev-feature_name-date_of_creation'}}
-git checkout -b $branch_name
-git push origin $branch_name
-```
+<img src="results/gifs/hyperlink_img/full_archi.png" width="1000" /> <br />
 
-## Requisites
-- List all packages and software needed to build the environment
-- This could include cloud command line tools (i.e. gsutil), package managers (i.e. conda), etc.
-```
-# Example
-- A
-- B
-- C
-```
+#### a list of files contained in the repository with a brief description of each file
 
-## Build Environment
+#### a list of files contained in the repository with a brief description of each file
+* **src** &#160; &#160;: Contains the main components of the architecture.
+* **src/data_prepration** &#160; &#160;: Video cutting using openCV 
+* **src/semantic_seg_gen**  &#160; &#160;: Generates semantic segmentation masked frames. 
+* **src/synthetic_video_gen** &#160; &#160;          : Generates synthetic RGB frames.
+* **results** &#160; &#160;   : stiched frames in gifs
+* **docker** &#160; &#160;           : Dockerfile to run the complete project as standalone application in a container(work in progress)
+* **datasets** &#160; &#160;   : Snippets of the BDD & Citycapes datasets used in the project.
+* **tests**  &#160; &#160;            : Evaluation scripts(work in progress)
+* **README.md**   &#160; &#160;          : Overview of the project & How to guide to use this codebase. 
+
+
+
+#### Directory structure needed for src/semantic_seg_gen.
 - Include instructions of how to launch scripts in the build subfolder
 Create the following directory structure for obtaining the Semantic Segmentation Masked images : 
 ---
@@ -91,68 +86,24 @@ ssm_generation
 ├── deepLab_vis_1.sh   (script to run deeplab/vis.py)
 └── download_data_in_dir.sh (After creating above directory structure, could be used for populating directories.)
 ```
-- Build scripts can include shell scripts or python setup.py files
-- The purpose of these scripts is to build a standalone environment, for running the code in this repository
-- The environment can be for local use, or for use in a cloud environment
-- If using for a cloud environment, commands could include CLI tools from a cloud provider (i.e. gsutil from Google Cloud Platform)
-```
-# Example
-
-# Step 1
-# Step 2
-```
-
-## Configs
-- We recommond using either .yaml or .txt for your config files, not .json
-- **DO NOT STORE CREDENTIALS IN THE CONFIG DIRECTORY!!**
-- If credentials are needed, use environment variables or HashiCorp's [Vault](https://www.vaultproject.io/)
 
 
-## Test
-- Include instructions for how to run all tests after the software is installed
-```
-# Example
+#### Medium(scale: 1024) trained “G” model.
+##### Before
 
-# Step 1
-# Step 2
-```
+<img src="results/gifs/CS_test1024Model_without_inst_fg_1024.gif" width="480" /> <br />
 
-## Run Inference
-- Include instructions on how to run inference
-- i.e. image classification on a single image for a CNN deep learning project
-```
-# Example
+##### After
 
-# Step 1
-# Step 2
-```
+<img src="results/gifs/CS_test2048Model_with_inst_fg_1024.gif" width="480" /> <br />
 
-## Build Model
-- Include instructions of how to build the model
-- This can be done either locally or on the cloud
-```
-# Example
+#### Fine (scale: 2048) trained “G” model.
 
-# Step 1
-# Step 2
-```
+##### Before
 
-## Serve Model
-- Include instructions of how to set up a REST or RPC endpoint 
-- This is for running remote inference via a custom model
-```
-# Example
+<img src="results/gifs/CS_test2048Model_without_inst_fg_2048.gif" width="480" /> <br />
 
-# Step 1
-# Step 2
-```
+##### After
 
-## Analysis
-- Include some form of EDA (exploratory data analysis)
-- And/or include benchmarking of the model and results
-```
-# Example
+<img src="results/gifs/CS_test2048Model_with_inst_fg_2048.gif" width="480" /> <br />
 
-# Step 1
-# Step 2
-```
