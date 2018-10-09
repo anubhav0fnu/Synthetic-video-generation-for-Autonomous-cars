@@ -1,5 +1,7 @@
-# Insight_Project_Framework
-Framework for machine learning projects at Insight Data Science. 
+# Automated Turk: Enhancing Autonomous Vehicles.
+This AI software solution:
+1. Generate Semantic Segmention of existing videos.
+2. Generate photo-realistic, High-resolution new driving videos.
 
 ## Motivation for this project format:
 - **src** : Put all source code for production within structured directory
@@ -39,6 +41,56 @@ git push origin $branch_name
 
 ## Build Environment
 - Include instructions of how to launch scripts in the build subfolder
+Create the following directory structure for obtaining the Semantic Segmentation Masked images : 
+---
+```bash
+ssm_generation
+├── bdd100K (dataset-1)
+│   ├── bdd100kscripts
+│   ├── checkpoints
+│   ├── exp (create these directories, required by deeplab scripts.)
+│   │   └── train_on_train_set
+│   │       ├── test
+│   │       ├── train
+│   │       └── val
+│   ├── images
+│   ├── labels
+│   └── tfrecord
+├── build_cityscapes_data.py (find scripts at "https://github.com/tensorflow/models/tree/master/research/deeplab/datasets/")
+├── build_data.py
+├── cityscapes (dataset-2)
+│   ├── checkpoints
+│   │   └── deeplabv3_cityscapes_train
+│   ├── cityscapesscripts (Maintain hierarchy, git clone "https://github.com/mcordts/cityscapesScripts.git")
+│   │   ├── annotation
+│   │   ├── evaluation
+│   │   ├── helpers
+│   │   ├── preparation
+│   │   └── viewer
+│   ├── exp
+│   │   └── train_on_train_set
+│   │       ├── eval
+│   │       ├── train
+│   │       └── vis
+│   │           ├── raw_segmentation_results
+│   │           └── segmentation_results
+│   ├── gtFine (Login & download the "gtFine_trainvaltest.zip" dataset)
+│   │   ├── test
+│   │   ├── train
+│   │   └── val
+│   ├── leftImg8bit (Login & download the "leftImg8bit_trainvaltest.zip" dataset)
+│   │   ├── test
+│   │   ├── train
+│   │   └── val
+│   └── tfrecord (Filled by "convert_cityscapes.sh" script.)
+├── convert_cityscapes.sh (split data into train & val sets & converts toTFrecords's shards.)
+├── deeplab ( git clone https://github.com/tensorflow/models/blob/master/research/deeplab)
+│   └── ...
+├── deepLab_train_1.sh (script to run deeplab/train.py)
+├── deepLab_eval_1.sh   (script to run deeplab/eval.py)
+├── deepLab_vis_1.sh   (script to run deeplab/vis.py)
+└── download_data_in_dir.sh (After creating above directory structure, could be used for populating directories.)
+```
 - Build scripts can include shell scripts or python setup.py files
 - The purpose of these scripts is to build a standalone environment, for running the code in this repository
 - The environment can be for local use, or for use in a cloud environment
