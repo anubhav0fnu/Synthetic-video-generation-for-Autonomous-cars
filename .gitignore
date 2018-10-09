@@ -103,7 +103,7 @@ venv.bak/
 # mypy
 .mypy_cache/
 
-*.png
+
 # dataset, models & checkpoints
 ./src/semantic_seg_gen/__pycache__
 
