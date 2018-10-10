@@ -103,6 +103,8 @@ venv.bak/
 # mypy
 .mypy_cache/
 
+# take care of it! You are missing the desirable Image files.
+*.png
 
 # dataset, models & checkpoints
 ./src/semantic_seg_gen/__pycache__

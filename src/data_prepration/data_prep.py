@@ -9,7 +9,10 @@ import numpy as np
 import av
 
 def display_image(input_dir) :
-
+    """
+    Display an image.
+    :param input_dir: Path to directory containing image.
+    """
     test_images_input = os.listdir(input_dir)
 
     stopper=0
@@ -26,10 +29,8 @@ def display_image(input_dir) :
 
 def rgb_2_single(input_dir, output_dir):
     """Applies the Grayscale transform
-    This will return an image with only one color channel but
-    NOTE: to see the returned image as grayscale
-    (assuming your grayscaled image is called 'gray')
-    you should call plt.imshow(gray, cmap='gray')
+    This will return an image with only one color channel but NOTE: to see the returned image as grayscale
+    (assuming your grayscaled image is called 'gray') you should call plt.imshow(gray, cmap='gray')
     """
 
     test_images_input = os.listdir(input_dir)
@@ -37,7 +38,6 @@ def rgb_2_single(input_dir, output_dir):
         os.makedirs(output_dir)
 
     for img in test_images_input:
-#         gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
         gray_image = cv2.imread(os.path.join(input_dir,img), cv2.IMREAD_GRAYSCALE)
         base_filename= os.path.basename(img)
         cv2.imwrite(output_dir+'/'+os.path.basename(img)[:-9]+'gray'+'.png', gray_image)
@@ -46,7 +46,10 @@ def rgb_2_single(input_dir, output_dir):
 
 
 def create_videos(frames_path):
-
+    """
+    Merge frames to generate videos.
+    :param frames_path: path to sequence of frames.
+    """
     Path(frames_path).mkdir(parents=True, exist_ok=True)
     parent_path= Path(frames_path)
     seq_folder = parent_path.glob('**')
@@ -64,11 +67,14 @@ def create_videos(frames_path):
     pass
 
 def create_semantic_segmentation_mask(image_path):
-    #TODO
+    #TODO Try to call deeplab internaly using this function, kept for later development.
     pass
 
 def frame_cutter(video_path):
-
+    """
+    cut  videos into frames. Here, it's cutting 2 frames per second.
+    :param frames_path: path to directory containing videos.
+    """
     video_pathlist = os.listdir(video_path)
     print("pathlist-->",len(list(video_pathlist)), type(video_pathlist))
 
@@ -125,7 +131,7 @@ def main():
     # rgb_2_single(test_random_ssm_input, test_random_ssm_output)
     # display_image(test_random_ssm_output)
 
-    frames_path= "/home/ubuntu/Documents/anubhav/vid2vid/datasets/BDD/bdd_sample_videos/test_sample_videos/samples-1k/Test"
+    frames_path= "BDD100k/bdd_sample_videos/test_sample_videos/samples-1k/Test"
     frame_cutter(frames_path, video_path='.')
 
     # frame_path = "/home/ubuntu/Documents/anubhav/vid2vid/datasets/BDD/bdd_sample_videos/test_sample_videos/samples-1k/test_sequences/00b04b30-2e874876/"
