@@ -53,7 +53,9 @@ I have also used S3 bucket for data dumps using a [python script](src/data_prepr
 
 ##### Setting it up!
 After setting up & login into your AWS AMI for an EC2 instance. 
+
 **Installation**:
+
 Switch to tensorflow_p36 conda environment & install : 
 > **Component 1**:
 opencv
@@ -65,14 +67,16 @@ pip install Pillow==2.2.1
 
 > **Component 2**:
 tf Slim ( It picks up the binaries from tensorflow installation!)
+
 jupyter notebook (Needed for quick visualization.)
 
 ```python
 conda install -c anaconda jupyter
 ```
 
-Switch to pytorch_p36 conda environment & install : 
+Now, switch to pytorch_p36 conda environment & install : 
 > **Component 3**:
+
 [dominate](https://github.com/Knio/dominate) 
 ```python
 pip install dominate requests
@@ -83,7 +87,7 @@ Download and compile a snapshot of FlowNet2 by running:
 python src/synthetic_video_gen/scripts/download_flownet2.py
 ```
 
-Very soon, I will be providing a dockerfile that which will take care of you environment & repository setup in a docker container as explained above.
+**NOTE**: Very soon, I will be providing a dockerfile that which will take care of you environment & repository setup in a docker container as explained above.
 
 ### Component 1: Data prepration.
 `src/data_prepration/data_prep.py`
@@ -162,6 +166,7 @@ The second froze checkpoint was used for evaluation and comparing results among 
 
 
 **Training**:
+
 `src/semantic_seg_gen/deepLab_train_1.sh`
 
 It is the local training job using `xception_65` model. I have highlighted some of the problems I have faced during training in the comments within the script.
@@ -175,13 +180,25 @@ Later, using the latest checkpoint collected in `src/semantic_seg_gen/cityscapes
 ### Component 3: Video Synthesis using Conditional GAN.
 Once we have our `labels` a.k.a `Semantic Segmentation Masks (SSM)` available for our videos(sequence of frames). We can start with 
 
-Training:
+**Training**:
+
 For single GPU, use
-`src/synthetic_video_gen/scripts/street/train_g1_1024.sh`
+
+`src/synthetic_video_gen/scripts/street/test_g1_1024.sh`
+
 For multiple GPUs use
+
 `src/synthetic_video_gen/scripts/street/train_2048.sh`
 
-Testing: 
+**Testing**: 
+
+For single GPU, use
+
+`src/synthetic_video_gen/scripts/street/test_g1_1024.sh`
+
+For multiple GPUs use
+
+`src/synthetic_video_gen/scripts/street/test_2048.sh`
 
 The below are results on two scales. Before results are based on 3 inputs to the sequential generator : `current (SSM)`, `previous 2 SSMs`, `previous 2 generated synthetic frames.` The after results were because of an added 4th input to the generator which is the foreground feature of the input SSM's. 
 
