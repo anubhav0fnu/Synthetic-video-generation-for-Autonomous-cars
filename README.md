@@ -1,7 +1,7 @@
 # Automated Turk: Enhancing Autonomous Vehicles.
 
 ## Why I have selected this problem?
-Statistically, each year up to 1.2 million deaths that occur due to car accidents across the globe were caused by human errors. Autonomous vehicle technology could drastically avoid these accidents. The self-driving car companies constantly trying to make their autonomous vehicles more robust by capturing the wide distribution of all possible driving scenarios but they failed to achieve at this point due to past recurring crashes. These autonomous systems actually learn from driving videos and the problem with currently available video datasets are
+Statistically, each year up to 1.2 million deaths occur due to car accidents across the globe are caused by human errors. Autonomous vehicle technology could drastically avoid these accidents. Self-driving car companies are constantly trying to make their autonomous vehicles more robust by capturing a wide distribution of all possible driving scenarios but have failed to achieve at this point due to past recurring crashes. These autonomous systems actually learn from driving videos and the problem with currently available video datasets are
   1. Not annotated.
   2. Most of them aren't high-resolution videos which is again an impediment for object detection.
 
@@ -16,12 +16,12 @@ An AI software solution with help of which you can:
 <img src="results/gifs/CS_test2048Model_with_inst_fg_2048.gif" width="480" /> <br />
 
 ## How my Full Architechure looks like? 
-It's mainly constitute 3 main components:
+It mainly constitutes of 3 components:
 1. Video to frame sequence generator using OpenCV.
 2. Generation of Semantic Segmentation masked frames for each associated frame sequences using [DEEPLAB](https://arxiv.org/abs/1606.00915) model. 
-3. Generating new photo-realistic, high-resolution videos from the above the generated frame sequences using [conditional Generative Networks framework](https://arxiv.org/abs/1808.06601).
+3. Generating new photo-realistic, high-resolution videos from the sequence of Semantic Segmentation masked frames using [conditional Generative Networks framework](https://arxiv.org/abs/1808.06601).
 
-It has been drawn below: (LEFT--> RIGHT)
+The full architecture: (Starting from LEFT to RIGHT.)
 <img src="results/gifs/reference_img/full_archi.png" width="1000" /> <br />
 
 ##### Brief description of the main directory structure.
@@ -52,7 +52,7 @@ The p2.xlarge instance was used for second component & p3.2xlarge instance for t
 I have also used S3 bucket for data dumps using a [python script](src/data_prepration/data_BDD100K2S3.py). You could also leverage [my hacks](https://gist.github.com/anubhav0fnu/3d4f6a3c9ce1342fb1d3671613150b65) & different IDE integration options [here](https://stackoverflow.com/questions/52340973/is-it-possible-to-ssh-in-aws-instances-using-any-ides-such-pycharm/52378438#52378438) to quickly get started working on cloud sources on a local workstation.
 
 ##### Setting it up!
-After setting up & login into your AWS AMI for an EC2 instance. 
+Once you have setup your AWS AMI for an EC2 instance, ssh into the machine, and follow the below instructions:
 
 **Installation**:
 
@@ -98,7 +98,7 @@ This script uses `OpenCV` to cut videos in to frames and save it into the desire
 
 The below directory structure is needed for `src/semantic_seg_gen` because it contains deeplab code & datasets in TFrecord format. For this component, I have used a well documented pre-existing implementation of [deeplab](https://github.com/tensorflow/models/tree/master/research/deeplab). 
 
-As, GitHub doesn't support large files, so I have written extra instructions while describing the directory structure. Datasets, models, & frozen graphs could be downloaded using [this script](src/semantic_seg_gen/download_data_in_dir.sh). 
+As, GitHub doesn't support large files, I have written extra instructions while describing the directory structure. Datasets, models, & frozen graphs could be downloaded using [this script](src/semantic_seg_gen/download_data_in_dir.sh). 
 
 ---
 ```bash
@@ -151,7 +151,7 @@ semantic_seg_gen
 ```
 ---
 
-The deeplab implementation is in tensorflow, and we need to first convert our dataset into TFrecord. You can use [this script](src/semantic_seg_gen/convert_cityscapes.sh) for this purpose.Once you have your dataset in a proper format, start with training and evaluation.
+The deeplab implementation is in tensorflow, and we need to first convert our dataset into TFrecord. You can use [this script](src/semantic_seg_gen/convert_cityscapes.sh) for this purpose. Once you have your dataset in a proper format, start with training and evaluation.
 
 The second froze checkpoint was used for evaluation and comparing results among other 3 will be posted soon [here.]() 
 
