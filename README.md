@@ -200,7 +200,7 @@ For multiple GPUs use
 
 `src/synthetic_video_gen/scripts/street/test_2048.sh`
 
-The below are results on two scales. Before results are based on 3 inputs to the sequential generator : `current (SSM)`, `previous 2 SSMs`, `previous 2 generated synthetic frames.` The after results were because of an added 4th input to the generator which is the foreground feature of the input SSM's. 
+The below are results on two scales. In each category the initial results are based on 3 inputs to the sequential generator : `current (SSM)`, `previous 2 SSMs`, `previous 2 generated synthetic frames.` and later results are based on an additional 4th input to the generator which is the foreground feature of the input SSM's. 
 
 #### Medium(scale: 1024) trained Generator model.
 ##### Before
