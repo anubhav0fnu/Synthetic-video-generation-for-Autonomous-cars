@@ -1,4 +1,4 @@
-# Automated Turk: Enhancing Autonomous Vehicles.
+# [Automated Turk: Enhancing Autonomous Vehicles](https://docs.google.com/presentation/d/1pdML0k93pHnheJhhF-xbBdl05GeEcSAVk9c8GRaB-E0/edit#slide=id.p1)
 
 ## Why I have selected this problem?
 Statistically, each year up to 1.2 million deaths occur due to car accidents across the globe are caused by human errors. Autonomous vehicle technology could drastically avoid these accidents. Self-driving car companies are constantly trying to make their autonomous vehicles more robust by capturing a wide distribution of all possible driving scenarios but have failed to achieve at this point due to past recurring crashes. These autonomous systems actually learn from driving videos and the problem with currently available video datasets are
@@ -221,3 +221,11 @@ The below are results on two scales. In each category the initial results are ba
 
 <img src="results/gifs/CS_test2048Model_with_inst_fg_2048.gif" width="480" /> <br />
 
+### Future Steps:
+I will continue developing on top of the current codebase and below are some of my ideas:
+
+1. Adding support for Multi-modal synthesis & semantic Manipulation techniques to generate rare events in the videos.
+2. Perfoming a Joint training of the two Neural networks (DeepLab NN + Conditional Generative adverserial NN).
+3. Planning to add support of [CARLA: An Open Urban Driving Simulator](http://carla.org/) inorder to evaluate the newly generated synthetic videos within a self-driving car environment. I need to override my dataset as an input to their simulator.
+4. Benchmarking the results from the current approach with others such as PIX-2-PIXHD & COVST approaches.
+5. Coming up with an Evaluation metric!
