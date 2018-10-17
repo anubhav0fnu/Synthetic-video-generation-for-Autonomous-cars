@@ -1,4 +1,4 @@
-# [Automated Turk: Enhancing Autonomous Vehicles](https://docs.google.com/presentation/d/1pdML0k93pHnheJhhF-xbBdl05GeEcSAVk9c8GRaB-E0/edit#slide=id.p1)
+# [Automated Turk: Enhancing Autonomous Vehicles](https://www.useloom.com/share/5f92e0aacbce41118e4fbf4d47d3ec33)
 
 ## Why I have selected this problem?
 Statistically, each year up to 1.2 million deaths occur due to car accidents across the globe are caused by human errors. Autonomous vehicle technology could drastically avoid these accidents. Self-driving car companies are constantly trying to make their autonomous vehicles more robust by capturing a wide distribution of all possible driving scenarios but have failed to achieve at this point due to past recurring crashes. These autonomous systems actually learn from driving videos and the problem with currently available video datasets are
@@ -229,3 +229,5 @@ I will continue developing on top of the current codebase and below are some of 
 3. Planning to add support of [CARLA: An Open Urban Driving Simulator](http://carla.org/) inorder to evaluate the newly generated synthetic videos within a self-driving car environment. I need to override my dataset as an input to their simulator.
 4. Benchmarking the results from the current approach with others such as PIX-2-PIXHD & COVST approaches.
 5. Coming up with an Evaluation metric!
+
+**Credits: I would like to thank the authors for providing [vid2vid](https://github.com/NVIDIA/vid2vid) framework in pyTorch and [DeepLab](https://github.com/tensorflow/models/tree/master/research/deeplab) implementation in tensorFlow.  
